@@ -1,6 +1,7 @@
 // Staging config. Also the default config that prod and dev are based off of.
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const bourbon = require('bourbon').includePaths;
 const neat = require('bourbon-neat').includePaths;
 const path = require('path');
@@ -31,7 +32,7 @@ const configGenerator = (options) => {
     output: {
       path: path.join(__dirname, `../build/${options.buildtype}/generated`),
       publicPath: '/generated/',
-      filename: '[name].entry.js'
+      filename: '[name].entry.[hash].js'
     },
     module: {
       loaders: [
@@ -116,8 +117,9 @@ const configGenerator = (options) => {
         'window.jQuery': 'jquery'
       }),
 
-      new ExtractTextPlugin('[name].css'),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new ExtractTextPlugin('[name].[hash].css'),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new HtmlWebpackPlugin()
     ],
   };
 
