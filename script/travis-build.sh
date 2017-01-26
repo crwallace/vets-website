@@ -69,21 +69,21 @@ then
 fi
 
 # Run lint
-# time npm run lint;
+ time npm run lint;
 
 # Run the unit tests and generate coverage report
 time npm run test:coverage;
 
 # Build and run tests against production
-# build production;
+ build production;
 
-# export BUILDTYPE=production;
+ export BUILDTYPE=production;
 
 # Bootstrap selenium for all nightwatch-based tests
-# time npm run selenium:bootstrap;
+ time npm run selenium:bootstrap;
 
 # Run end to end tests
-# time npm run test:e2e;
+ time npm run test:e2e;
 
 # Run accessibility tests
-# time npm run test:accessibility;
+ time npm run test:accessibility;
